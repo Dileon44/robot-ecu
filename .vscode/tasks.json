@@ -1,0 +1,61 @@
+{
+    "version": "2.0.0",
+    "windows": {
+        "options": {
+            "shell": {
+                "executable": "cmd.exe",
+                "args": [
+                    "/C", "sh"
+                ]
+            }
+        }
+    },
+    "problemMatcher": "$gcc",
+
+    "tasks": [
+        {
+            "type": "cmake",
+            "label": "Build",
+            "group": "build",
+            "command": "build",
+            "preset": "${command:cmake.activeBuildPresetName}",
+            "detail": "Build target with current configured preset",
+            "dependsOn": [
+                "Generate Doxygen"
+            ]
+        },
+        {
+            "type": "cmake",
+            "label": "Clean",
+            "command": "clean",
+            "preset": "${command:cmake.activeBuildPresetName}",
+            "detail": "Clean current configured preset"
+        },
+        {
+            "type": "cmake",
+            "label": "Clean and Rebuild",
+            "group": "build",
+            "command": "cleanRebuild",
+            "preset": "${command:cmake.activeBuildPresetName}",
+            "detail": "Clean and rebuild target with current configured preset",
+            "dependsOn": [
+                "Generate Doxygen"
+            ]
+        },
+        {
+            "label": "Select Configure Preset",
+            "group": "build",
+            "command": "cmake --preset ${input:CMakeConfigurePreset}",
+            "type": "shell",
+            "problemMatcher": []
+        }
+    ],
+
+    "inputs": [
+        {
+            "id": "CMakeConfigurePreset",
+            "type": "command",
+            "command": "cmake.projectStatus.selectConfigurePreset",
+        }
+    ],
+}

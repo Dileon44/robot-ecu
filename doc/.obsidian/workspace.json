@@ -14,7 +14,7 @@
               "type": "markdown",
               "state": {
                 "file": "hard/stm32g431cbu.md",
-                "mode": "source",
+                "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
@@ -177,7 +177,7 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "45b3736f2ff6134a",
+  "active": "1ba8d4d073b76a91",
   "lastOpenFiles": [
     "hard/stm32g431cbu.md",
     "hard/GW5AT-LV60PG484AES.md",

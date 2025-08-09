@@ -1,0 +1,74 @@
+{
+    "version": 2,
+    "configurePresets": [
+        {
+            "name": "default",
+            "hidden": true,
+            "generator": "Ninja",
+            "binaryDir": "${sourceDir}/build/${presetName}",
+            "cacheVariables": {
+                "CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
+            }
+        },
+        {
+            "name": "m0r0c0",
+            "inherits": "default",
+            "cacheVariables": {
+                "WSH_FW_PLATFORM": "m0r0c0",
+                "WSH_FW_PLATFORM_MCU": "m0",
+                "WSH_FW_PLATFORM_REV": "r0",
+                "WSH_FW_PLATFORM_CFG": "c0"
+            }
+        },
+        {
+            "name": "m0r0c1",
+            "inherits": "default",
+            "cacheVariables": {
+                "WSH_FW_PLATFORM": "m0r0c1",
+                "WSH_FW_PLATFORM_MCU": "m0",
+                "WSH_FW_PLATFORM_REV": "r0",
+                "WSH_FW_PLATFORM_CFG": "c1"
+            }
+        },
+        {
+            "name": "Custom configure preset",
+            "displayName": "Custom configure preset",
+            "description": "Sets Ninja generator, build and install directory",
+            "generator": "Ninja",
+            "binaryDir": "${sourceDir}/out/build/${presetName}",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug",
+                "CMAKE_INSTALL_PREFIX": "${sourceDir}/out/install/${presetName}"
+            }
+        },
+        {
+            "name": "Configure preset using toolchain file",
+            "displayName": "Configure preset using toolchain file",
+            "description": "Sets Ninja generator, build and install directory",
+            "generator": "Ninja",
+            "binaryDir": "${sourceDir}/out/build/${presetName}",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug",
+                "CMAKE_TOOLCHAIN_FILE": "",
+                "CMAKE_INSTALL_PREFIX": "${sourceDir}/out/install/${presetName}"
+            }
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "base",
+            "hidden": true,
+            "configurePreset": "default"
+        },
+        {
+            "name": "m0r0c0",
+            "inherits": "base",
+            "configurePreset": "m0r0c0"
+        },
+        {
+            "name": "m0r0c1",
+            "inherits": "base",
+            "configurePreset": "m0r0c1"
+        }
+    ]
+}
