@@ -12,8 +12,8 @@ int main(void)
 
 void ErrorHandler(char *pFile, int line)
 {
-	DISCARD_UNUNSED(pFile);
-	DISCARD_UNUNSED(line);
+	DISCARD_UNUSED(pFile);
+	DISCARD_UNUSED(line);
 
 	Pl_IrqOff();
 	PL_SET_BKPT();

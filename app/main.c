@@ -14,20 +14,21 @@
 
 u8 ucHeap[configTOTAL_HEAP_SIZE];
 
-void FreeRTOS_InitComponents(void);
-
-void HardFault_Clbk(u32 pcVal)
-{
+void HardFault_Clbk(u32 pcVal) {
 	// BkpStorage_SetRegister(BKP_REG_SYS_FAULT_EXEPTION_ADDR, pcVal);
-
-	// Pl_Motor_ResetKeyAL();
-	// Pl_Motor_ResetKeyBL();
-	// Pl_Motor_ResetKeyCL();
-	// Pl_Motor_PWMA_Disable();
-	// Pl_Motor_PWMB_Disable();
-	// Pl_Motor_PWMC_Disable();
 	__NOP();
 }
+
+void ErrorHandler(char *pFile, int line) {
+	DISCARD_UNUSED(pFile);
+	DISCARD_UNUSED(line);
+
+	Pl_IrqOff();
+	PL_SET_BKPT();
+	while(1);
+}
+
+void FreeRTOS_InitComponents(void);
 
 int main(void) {
 	FreeRTOS_InitComponents();
@@ -35,24 +36,13 @@ int main(void) {
 	Pl_Led_Init();
 	
 	Delay_Init();
-	// IWDG_Init();
 	DebugInterface_Init();
-	// Motor_Init();
+	// IWDG_Init();
 
 	vTaskStartScheduler();
 	
 	for(;;)
 		__NOP();
-}
-
-void ErrorHandler(char *pFile, int line)
-{
-	DISCARD_UNUNSED(pFile);
-	DISCARD_UNUNSED(line);
-
-	Pl_IrqOff();
-	PL_SET_BKPT();
-	while(1);
 }
 
 void assert_failed(uint8_t *file, uint32_t line)
@@ -63,11 +53,6 @@ void assert_failed(uint8_t *file, uint32_t line)
   /* USER CODE END 6 */
 }
 
-void FreeRTOS_InitComponents(void)
-{
-	// FreeRTOS_IWDG_InitComponents();
+void FreeRTOS_InitComponents(void) {
 	FreeRTOS_DebugProcess_InitComponents();
-	// FreeRTOS_Motor_InitComponents();
-	// FreeRTOS_Sensors_InitComponents();
-	// FreeRTOS_MotorUartProcess_InitComponents();
 }

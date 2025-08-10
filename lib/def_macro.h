@@ -1,9 +1,9 @@
 #ifndef __DEF_MACRO_H
 #define __DEF_MACRO_H
 
-#ifndef DISCARD_UNUNSED
-#define DISCARD_UNUNSED(a)							((void)a)
-#endif /* DISCARD_UNUNSED */
+#ifndef DISCARD_UNUSED
+#define DISCARD_UNUSED(a)							((void)a)
+#endif /* DISCARD_UNUSED */
 
 #define RETURN_IF_UNSUCCESS(a)						if((a) != RET_STATE_SUCCESS) return(a)
 

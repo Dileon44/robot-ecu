@@ -13,21 +13,21 @@
 void Pl_Stub_CommonClbk(void) {}
 
 void Pl_Stub_HardFaultClbk(u32 pcVal) {
-	DISCARD_UNUNSED(pcVal);
+	DISCARD_UNUSED(pcVal);
 }
 
 void Pl_Stub_HallClbk(u32 idHall) {
-	DISCARD_UNUNSED(idHall);
+	DISCARD_UNUSED(idHall);
 }
 
 void Pl_Stub_Sensors_ADCLowFreqClbk(u16* buffPtr, u16 buffLen) {
-	DISCARD_UNUNSED(buffPtr);
-	DISCARD_UNUNSED(buffLen);
+	DISCARD_UNUSED(buffPtr);
+	DISCARD_UNUSED(buffLen);
 }
 
 void Pl_Stub_Motor_AdcHighFreqClbk(u16* buffPtr, u16 buffLen) {
-	DISCARD_UNUNSED(buffPtr);
-	DISCARD_UNUNSED(buffLen);
+	DISCARD_UNUSED(buffPtr);
+	DISCARD_UNUSED(buffLen);
 }
 
 void Pl_Init(Pl_HardFault_Clbk_t pHardFault_Clbk) {
