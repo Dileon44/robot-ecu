@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "hard/esc_g4.md",
-                "mode": "preview",
+                "file": "General.md",
+                "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "esc_g4"
+              "title": "General"
             }
           },
           {
@@ -70,7 +70,7 @@
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -127,8 +127,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 350.5,
-    "collapsed": true
+    "width": 350.5
   },
   "right": {
     "id": "d46ce9e2b9d26820",
@@ -227,11 +226,12 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "2668c83dcd8a7514",
+  "active": "74caca6bf9e0c127",
   "lastOpenFiles": [
-    "_files/esc_g4/um2516-electronic-speed-controller-discovery-kit-for-drones-with-stm32g431cb-stmicroelectronics.pdf",
     "_files/esc_g4/mb1419-g431cbu6-c01_schematic.pdf",
+    "General.md",
     "hard/esc_g4.md",
+    "_files/esc_g4/um2516-electronic-speed-controller-discovery-kit-for-drones-with-stm32g431cb-stmicroelectronics.pdf",
     "_files/stm32g431cbu/Datasheet.pdf",
     "_files/stm32g431cbu/rm0440-stm32g4-series-advanced-armbased-32bit-mcus-stmicroelectronics.pdf",
     "features/Other.md",
@@ -263,7 +263,6 @@
     "workflow/gitmodules.md",
     "workflow/docs.md",
     "note.md",
-    "Note.md",
     "_files/photo_2025-07-22_00-07-42.jpg",
     "Pasted image 20250809182938.png",
     "_files/Pasted image 20250809194500.png",

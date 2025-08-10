@@ -8,7 +8,7 @@ void USART_Debug_Init(Pl_USART_ClbkRx_t pRxClbk)
 {
     ASSIGN_NOT_NULL_VAL_TO_PTR(USART_Debug_RxClbk, pRxClbk);
 
-    LL_RCC_SetUSARTClockSource(LL_RCC_USART2_CLKSOURCE_PCLK1);
+    LL_RCC_SetUSARTClockSource(LL_RCC_USART2_CLKSOURCE_HSI);
     USART_DEBUG_CLK_EN();
 
     LL_USART_InitTypeDef USART_InitStruct = { 0 };

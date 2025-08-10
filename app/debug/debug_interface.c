@@ -2,8 +2,8 @@
 #include "platform.h"
 #include "debug_process.h"
 
-static u8 DEBUG_INTERFACE_USART_TX_BUFF[USART_TX_BUFF_MAX_SIZE];
-static u8 DEBUG_INTERFACE_USART_RX_BUFF[USART_RX_BUFF_MAX_SIZE];
+static u8 DEBUG_INTERFACE_USART_TX_BUFF[USART_TX_BUFF_MAX_SIZE] = {0};
+static u8 DEBUG_INTERFACE_USART_RX_BUFF[USART_RX_BUFF_MAX_SIZE] = {0};
 
 RingBuff_t DebugInterface_Usart_RingBuff;
 

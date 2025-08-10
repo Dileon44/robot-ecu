@@ -29,8 +29,7 @@ void HardFault_Clbk(u32 pcVal)
 	__NOP();
 }
 
-int main(void)
-{
+int main(void) {
 	FreeRTOS_InitComponents();
 	Pl_Init(HardFault_Clbk);
 	Pl_Led_Init();
