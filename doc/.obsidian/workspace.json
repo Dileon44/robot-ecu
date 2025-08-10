@@ -37,12 +37,14 @@
             "id": "74caca6bf9e0c127",
             "type": "leaf",
             "state": {
-              "type": "pdf",
+              "type": "markdown",
               "state": {
-                "file": "_files/esc_g4/um2516-electronic-speed-controller-discovery-kit-for-drones-with-stm32g431cb-stmicroelectronics.pdf"
+                "file": "General.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-file-text",
-              "title": "um2516-electronic-speed-controller-discovery-kit-for-drones-with-stm32g431cb-stmicroelectronics"
+              "icon": "lucide-file",
+              "title": "General"
             }
           },
           {
@@ -228,10 +230,10 @@
   },
   "active": "74caca6bf9e0c127",
   "lastOpenFiles": [
+    "_files/esc_g4/um2516-electronic-speed-controller-discovery-kit-for-drones-with-stm32g431cb-stmicroelectronics.pdf",
     "_files/esc_g4/mb1419-g431cbu6-c01_schematic.pdf",
     "General.md",
     "hard/esc_g4.md",
-    "_files/esc_g4/um2516-electronic-speed-controller-discovery-kit-for-drones-with-stm32g431cb-stmicroelectronics.pdf",
     "_files/stm32g431cbu/Datasheet.pdf",
     "_files/stm32g431cbu/rm0440-stm32g4-series-advanced-armbased-32bit-mcus-stmicroelectronics.pdf",
     "features/Other.md",
