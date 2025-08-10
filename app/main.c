@@ -1,6 +1,4 @@
 #include "main.h"
-
-// #include "bsp.h"
 #include "platform.h"
 #include "iwdg.h"
 #include "delay.h"
@@ -22,12 +20,12 @@ void HardFault_Clbk(u32 pcVal)
 {
 	// BkpStorage_SetRegister(BKP_REG_SYS_FAULT_EXEPTION_ADDR, pcVal);
 
-	Pl_Motor_ResetKeyAL();
-	Pl_Motor_ResetKeyBL();
-	Pl_Motor_ResetKeyCL();
-	Pl_Motor_PWMA_Disable();
-	Pl_Motor_PWMB_Disable();
-	Pl_Motor_PWMC_Disable();
+	// Pl_Motor_ResetKeyAL();
+	// Pl_Motor_ResetKeyBL();
+	// Pl_Motor_ResetKeyCL();
+	// Pl_Motor_PWMA_Disable();
+	// Pl_Motor_PWMB_Disable();
+	// Pl_Motor_PWMC_Disable();
 	__NOP();
 }
 
@@ -35,11 +33,12 @@ int main(void)
 {
 	FreeRTOS_InitComponents();
 	Pl_Init(HardFault_Clbk);
+	Pl_Led_Init();
 	
 	Delay_Init();
-	IWDG_Init();
+	// IWDG_Init();
 	DebugInterface_Init();
-	Motor_Init();
+	// Motor_Init();
 
 	vTaskStartScheduler();
 	
@@ -67,9 +66,9 @@ void assert_failed(uint8_t *file, uint32_t line)
 
 void FreeRTOS_InitComponents(void)
 {
-	FreeRTOS_IWDG_InitComponents();
+	// FreeRTOS_IWDG_InitComponents();
 	FreeRTOS_DebugProcess_InitComponents();
 	// FreeRTOS_Motor_InitComponents();
 	// FreeRTOS_Sensors_InitComponents();
-	FreeRTOS_MotorUartProcess_InitComponents();
+	// FreeRTOS_MotorUartProcess_InitComponents();
 }

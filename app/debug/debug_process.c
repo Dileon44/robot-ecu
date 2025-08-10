@@ -5,18 +5,15 @@
 
 static TaskHandle_t DebugProcess_HandleRx = NULL;
 
-static void vTask_DebugProcess(void* pvParameters)
-{
-    for(;;)
-	{
-		vTaskDelay(100);
+static void vTask_DebugProcess(void* pvParameters) {
+    for(;;) {
+		Pl_Led_Toggle();
+		vTaskDelay(20000);
 	}
 }
 
-void DebugProcess_TaskCreate(void)
-{
-	if(!DebugProcess_HandleRx)
-	{
+void DebugProcess_TaskCreate(void) {
+	if(!DebugProcess_HandleRx) {
 		string taskName = "Debug Process";
 		xTaskCreate(
 			vTask_DebugProcess,
@@ -29,7 +26,6 @@ void DebugProcess_TaskCreate(void)
 	}
 }
 
-void FreeRTOS_DebugProcess_InitComponents()
-{
+void FreeRTOS_DebugProcess_InitComponents() {
 	DebugProcess_TaskCreate();
 }

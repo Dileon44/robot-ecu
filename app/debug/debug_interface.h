@@ -15,8 +15,8 @@
 														fflush(stdout); \
 													} while(0)
 
-#define USART_TX_BUFF_MAX_SIZE          ((u8)120)
-#define USART_RX_BUFF_MAX_SIZE          ((u8)50)
+#define USART_TX_BUFF_MAX_SIZE          ((u8)128)
+#define USART_RX_BUFF_MAX_SIZE          ((u8)64)
 
 #define CAPASITY_RING_BUFF_USART_RX     USART_RX_BUFF_MAX_SIZE
 

@@ -3,9 +3,9 @@
 #include "sys_config_m0.h"
 #include "sys.h"
 
-#define USART_DEBUG_TX_RX_PORT		GPIOC
-#define USART_DEBUG_TX_PIN			LL_GPIO_PIN_10
-#define USART_DEBUG_RX_PIN			LL_GPIO_PIN_11
+#define USART_DEBUG_TX_RX_PORT		GPIOB
+#define USART_DEBUG_TX_PIN			LL_GPIO_PIN_3
+#define USART_DEBUG_RX_PIN			LL_GPIO_PIN_4
 #define USART_DEBUG_TX_RX_AF		LL_GPIO_AF_7
 
 #define MOTOR_HIGH_KEYS_PORT        GPIOA
@@ -76,8 +76,8 @@
 // #define GPIO_SENS_TEMP_MOSFET_PIN   GPIOC
 // #define GPIO_SENS_TEMP_MOSFET_PORT  LL_GPIO_PIN_4
 
-#define GPIO_LED_PORT        GPIOB
-#define GPIO_LED_PIN         LL_GPIO_PIN_10
+#define GPIO_LED_PORT        GPIOC
+#define GPIO_LED_PIN         LL_GPIO_PIN_6
 
 // static Pl_Motor_ClbkHall_t GPIO_Motor_HallClbk = Pl_Stub_CommonClbk;
 static Pl_Motor_ClbkHall_t GPIO_Motor_HallClbk = Pl_Stub_HallClbk;

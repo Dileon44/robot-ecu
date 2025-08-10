@@ -2,6 +2,7 @@
 #include "sys_config_m0.h"
 #include "sys.h"
 #include "adc.h"
+#include "usart.h"
 
 #define DMA_SENSORS_ADC_LOW_FREQ			DMA1
 #define DMA_SENSORS_ADC_LOW_FREQ_CHANNEL	LL_DMA_CHANNEL_3
@@ -44,7 +45,7 @@ void DMA_Debug_Init_Tx(void* interface, u8* buff, u16 buffSize, Pl_USART_ClbkTx_
 	DMA_InitStruct.MemoryOrM2MDstDataSize = LL_DMA_MDATAALIGN_BYTE;
 	DMA_InitStruct.NbData = buffSize;
     DMA_InitStruct.Priority = LL_DMA_PRIORITY_HIGH;
-	DMA_InitStruct.PeriphRequest = LL_DMAMUX_REQ_USART3_TX;
+	DMA_InitStruct.PeriphRequest = LL_DMAMUX_REQ_USART2_TX;
 
 	LL_DMA_Init(DMA_DEBUG_TX, DMA_DEBUG_TX_CHANNEL, &DMA_InitStruct);
 
@@ -66,7 +67,7 @@ void DMA_Debug_Init_Rx(void* interface, u8* buff, u16 buffSize, Pl_USART_ClbkRx_
 	DMA_InitStruct.MemoryOrM2MDstDataSize = LL_DMA_MDATAALIGN_BYTE;
 	DMA_InitStruct.NbData = buffSize;
     DMA_InitStruct.Priority = LL_DMA_PRIORITY_MEDIUM;
-	DMA_InitStruct.PeriphRequest = LL_DMAMUX_REQ_USART3_RX;
+	DMA_InitStruct.PeriphRequest = LL_DMAMUX_REQ_USART2_RX;
 
 	LL_DMA_Init(DMA_DEBUG_RX, DMA_DEBUG_RX_CHANNEL, &DMA_InitStruct);
 
@@ -128,7 +129,7 @@ void DMA_DEBUG_TX_IRQ_HDL(void) {
 		USART_Debug_TxClbk();
 		DMA_DEBUG_TX_CLEAR_TC();
         LL_DMA_ClearFlag_TE1(DMA_DEBUG_TX);
-		LL_USART_EnableDMAReq_TX(USART3);
+		LL_USART_EnableDMAReq_TX(USART_Debug_GetUSART());
 	}
 }
 
