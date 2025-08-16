@@ -390,7 +390,7 @@ void GPIO_ADCHighFreq_Init(void) {
     GPIO_SensCurC_Init();
 }
 
-void GPIO_Led_Init(void) {
+void GPIO_LedDebug_Init(void) {
     LL_GPIO_InitTypeDef GPIO_InitStruct = { 0 };
     GPIO_InitStruct.Pin = GPIO_LED_PIN;
     GPIO_InitStruct.Mode = LL_GPIO_MODE_OUTPUT;

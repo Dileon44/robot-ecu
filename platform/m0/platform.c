@@ -318,8 +318,8 @@ __INLINE void Pl_ADC_StartHighFreqConv(void) {
 	ADC_StartHighFreqConv();
 }
 
-__INLINE void Pl_Led_Init(void) {
-	GPIO_Led_Init();
+__INLINE void Pl_LedDebug_Init(void) {
+	GPIO_LedDebug_Init();
 }
 
 __INLINE void Pl_Led_Set(void) {

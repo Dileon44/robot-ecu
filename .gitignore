@@ -1,4 +1,14 @@
 build
 *.original
-*.r2023a
-workspace.json
+
+# Object files
+*.o
+*.ko
+*.obj
+*.elf
+
+# Executables
+*.exe
+
+# Obsidian
+doc/.obsidian/workspace.json

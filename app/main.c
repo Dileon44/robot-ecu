@@ -2,11 +2,8 @@
 #include "platform.h"
 #include "iwdg.h"
 #include "delay.h"
-#include "debug/debug_interface.h"
-#include "debug/debug_process.h"
-#include "motor/motor.h"
-#include "motor/sensors.h"
-#include "uart_process.h"
+#include "debug_interface.h"
+#include "debug_process.h"
 
 #if DEBUG_ENABLE
 #warning DEBUG_ENABLE
@@ -25,34 +22,41 @@ void ErrorHandler(char *pFile, int line) {
 
 	Pl_IrqOff();
 	PL_SET_BKPT();
-	while(1);
+	while(true) {
+	};
 }
 
-void FreeRTOS_InitComponents(void);
+void assert_failed(uint8_t *file, uint32_t line) {
+  	DISCARD_UNUSED(file);
+	DISCARD_UNUSED(line);
+	PANIC();
+}
+
+void FreeRTOS_InitComponents(bool resources, bool tasks) {
+	FreeRTOS_DebugProcess_InitComponents(resources, tasks);
+}
 
 int main(void) {
-	FreeRTOS_InitComponents();
-	Pl_Init(HardFault_Clbk);
-	Pl_Led_Init();
-	
-	Delay_Init();
-	DebugInterface_Init();
+#if !DEBUG_ENABLE
 	// IWDG_Init();
+#endif /* !DEBUG_ENABLE */
 
+	FreeRTOS_InitComponents(true, false);
+	Pl_Init(HardFault_Clbk);
+	Pl_LedDebug_Init();
+
+	Delay_Init();
+
+#if DEBUG_ENABLE
+	DebugInterface_Init();
+#endif /* DEBUG_ENABLE */
+
+	FreeRTOS_InitComponents(false, true);
 	vTaskStartScheduler();
 	
-	for(;;)
-		__NOP();
-}
+	for(;;) {
+		PANIC();
+	}
 
-void assert_failed(uint8_t *file, uint32_t line)
-{
-  /* USER CODE BEGIN 6 */
-  /* User can add his own implementation to report the file name and line number,
-     ex: printf("Wrong parameters value: file %s on line %d\r\n", file, line) */
-  /* USER CODE END 6 */
-}
-
-void FreeRTOS_InitComponents(void) {
-	FreeRTOS_DebugProcess_InitComponents();
+	return 0;
 }

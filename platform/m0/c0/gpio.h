@@ -37,7 +37,7 @@ void GPIO_SensCurB_Init(void);
 void GPIO_SensCurC_Init(void);
 void GPIO_ADCHighFreq_Init(void);
 
-void GPIO_Led_Init(void);
+void GPIO_LedDebug_Init(void);
 void GPIO_Led_Set(void);
 void GPIO_Led_Reset(void);
 void GPIO_Led_Toggle(void);

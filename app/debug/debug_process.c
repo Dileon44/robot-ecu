@@ -8,8 +8,8 @@ static TaskHandle_t DebugProcess_HandleRx = NULL;
 static void vTask_DebugProcess(void* pvParameters) {
     for(;;) {
 		Pl_Led_Toggle();
-		// DEBUG_PRINT("Test\r\n");
-		vTaskDelay(20000);
+		DEBUG_PRINT("Test\r\n");
+		vTaskDelay(10000);
 	}
 }
 

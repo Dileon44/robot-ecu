@@ -108,7 +108,7 @@ void Pl_TIM_SpeedControl_Init(Pl_TIM_Motor_SpeedControlClbk_t pSpeedControlClbk)
 void Pl_DMA_AdcHighFreq_Enable(void);
 void Pl_ADC_StartHighFreqConv(void);
 
-void Pl_Led_Init(void);
+void Pl_LedDebug_Init(void);
 void Pl_Led_Set(void);
 void Pl_Led_Reset(void);
 void Pl_Led_Toggle(void);
