@@ -14,20 +14,20 @@
             "name": "m0r0c0",
             "inherits": "default",
             "cacheVariables": {
-                "WSH_FW_PLATFORM": "m0r0c0",
-                "WSH_FW_PLATFORM_MCU": "m0",
-                "WSH_FW_PLATFORM_REV": "r0",
-                "WSH_FW_PLATFORM_CFG": "c0"
+                "FW_PLATFORM": "m0r0c0",
+                "FW_PLATFORM_MCU": "m0",
+                "FW_PLATFORM_REV": "r0",
+                "FW_PLATFORM_CFG": "c0"
             }
         },
         {
             "name": "m0r0c1",
             "inherits": "default",
             "cacheVariables": {
-                "WSH_FW_PLATFORM": "m0r0c1",
-                "WSH_FW_PLATFORM_MCU": "m0",
-                "WSH_FW_PLATFORM_REV": "r0",
-                "WSH_FW_PLATFORM_CFG": "c1"
+                "FW_PLATFORM": "m0r0c1",
+                "FW_PLATFORM_MCU": "m0",
+                "FW_PLATFORM_REV": "r0",
+                "FW_PLATFORM_CFG": "c1"
             }
         },
         {

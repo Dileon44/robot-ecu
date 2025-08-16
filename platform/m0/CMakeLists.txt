@@ -40,5 +40,5 @@ add_link_options(
 	-Wl,-cref
 	-Wl,-u,Reset_Handler
 	-Wl,--defsym=malloc_getpagesize_P=0x80
-	-Wl,-Map=${CMAKE_SOURCE_DIR}/${BUILD_DIR}/${WSH_FW_PLATFORM}.map
+	-Wl,-Map=${CMAKE_SOURCE_DIR}/${BUILD_DIR}/${FW_PLATFORM}.map
 )

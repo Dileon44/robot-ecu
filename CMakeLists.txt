@@ -16,14 +16,14 @@ SET(CMAKE_C_STANDARD 17)
 
 set(BUILD_DIR build)
 
-set(WSH_FW_VER_APP ${PROJECT_VERSION})
-set(WSH_FW_VER_BOOT 1.0.0)
+set(FW_VER_APP ${PROJECT_VERSION})
+set(FW_VER_BOOT 1.0.0)
 
 # set(PLATFORM m3)
-set(WSH_FW_TYPE prd)
-# set(WSH_FW_PLATFORM m3r0c0)
-set(WSH_FW_BSP 0)
-set(WSH_FW_ADEQ ffffff)
+set(FW_TYPE prd)
+# set(FW_PLATFORM m3r0c0)
+set(FW_BSP 0)
+set(FW_ADEQ ffffff)
 
 execute_process(
 	COMMAND git rev-parse --short=6 HEAD
@@ -31,19 +31,19 @@ execute_process(
 	OUTPUT_VARIABLE GIT_COMMIT_HASH
 	OUTPUT_STRIP_TRAILING_WHITESPACE
 )
-set(WSH_FW_GIT_HASH ${GIT_COMMIT_HASH})
+set(FW_GIT_HASH ${GIT_COMMIT_HASH})
 
 file(GLOB_RECURSE SOURCES
-	"plib/*.c"
-	"platform/${WSH_FW_PLATFORM_MCU}/${WSH_FW_PLATFORM_CFG}/*.c"
-	"platform/${WSH_FW_PLATFORM_MCU}/core/*.c"
-	"platform/${WSH_FW_PLATFORM_MCU}/platform.c"
-	"platform/${WSH_FW_PLATFORM_MCU}/*.s"
+	"shared/*.c"
+	"platform/${FW_PLATFORM_MCU}/${FW_PLATFORM_CFG}/*.c"
+	"platform/${FW_PLATFORM_MCU}/core/*.c"
+	"platform/${FW_PLATFORM_MCU}/platform.c"
+	"platform/${FW_PLATFORM_MCU}/*.s"
 )
 
 include_directories(
 	${CMAKE_SOURCE_DIR}/lib
-	${CMAKE_SOURCE_DIR}/plib
+	${CMAKE_SOURCE_DIR}/shared
 	${CMAKE_SOURCE_DIR}/platform
 	${CMAKE_SOURCE_DIR}/bsp
 )
@@ -78,7 +78,7 @@ add_link_options(
 
 # PLATFORM SPECIFIC
 # add_subdirectory(platform/m3)
-include(platform/${WSH_FW_PLATFORM_MCU}/CMakeLists.txt)
+include(platform/${FW_PLATFORM_MCU}/CMakeLists.txt)
 
 add_compile_definitions(
 	FLASH_BOOT_ADDR=${FLASH_BOOT_ADDR}
@@ -116,9 +116,9 @@ FetchContent_MakeAvailable(freertos_kernel)
 
 # APP
 set(TARGET_APP app)
-set(APP_FULL_NAME ${WSH_FW_VER_APP}.${PROJECT_NAME}.app.${WSH_FW_TYPE}.${WSH_FW_PLATFORM}.${WSH_FW_BSP}.${WSH_FW_ADEQ}.${WSH_FW_GIT_HASH})
+set(APP_FULL_NAME ${FW_VER_APP}.${PROJECT_NAME}.app.${FW_TYPE}.${FW_PLATFORM}.${FW_BSP}.${FW_ADEQ}.${FW_GIT_HASH})
 add_executable(${TARGET_APP}.elf ${SOURCES})
-set_target_properties(${TARGET_APP}.elf PROPERTIES VERSION ${WSH_FW_VER_APP})
+set_target_properties(${TARGET_APP}.elf PROPERTIES VERSION ${FW_VER_APP})
 target_link_libraries(${TARGET_APP}.elf freertos_kernel)
 file(GLOB_RECURSE SOURCES_APP
 	"lib/*.c"
@@ -130,7 +130,7 @@ target_include_directories(${TARGET_APP}.elf PRIVATE
 )
 target_link_options(${TARGET_APP}.elf PRIVATE
 	-u _printf_float
-	-T${CMAKE_SOURCE_DIR}/${BUILD_DIR}/${WSH_FW_PLATFORM}_app_linker_script.ld
+	-T${CMAKE_SOURCE_DIR}/${BUILD_DIR}/${FW_PLATFORM}_app_linker_script.ld
 )
 set_target_properties(${TARGET_APP}.elf
 	PROPERTIES
@@ -138,16 +138,16 @@ set_target_properties(${TARGET_APP}.elf
 )
 add_custom_command(TARGET ${TARGET_APP}.elf POST_BUILD
 	COMMAND ${CMAKE_COMMAND} -E copy
-	${CMAKE_SOURCE_DIR}/${BUILD_DIR}/${WSH_FW_PLATFORM}/${APP_FULL_NAME}.elf
-	${CMAKE_SOURCE_DIR}/${BUILD_DIR}/fw_${WSH_FW_PLATFORM_MCU}.elf
+	${CMAKE_SOURCE_DIR}/${BUILD_DIR}/${FW_PLATFORM}/${APP_FULL_NAME}.elf
+	${CMAKE_SOURCE_DIR}/${BUILD_DIR}/fw_${FW_PLATFORM_MCU}.elf
 )
 # APP
 
 # BOOT
 set(TARGET_BOOT boot)
-set(BOOT_FULL_NAME ${WSH_FW_VER_BOOT}.${PROJECT_NAME}.boot.${WSH_FW_TYPE}.${WSH_FW_PLATFORM}.${WSH_FW_BSP}.${WSH_FW_ADEQ}.${WSH_FW_GIT_HASH})
+set(BOOT_FULL_NAME ${FW_VER_BOOT}.${PROJECT_NAME}.boot.${FW_TYPE}.${FW_PLATFORM}.${FW_BSP}.${FW_ADEQ}.${FW_GIT_HASH})
 add_executable(${TARGET_BOOT}.elf ${SOURCES})
-set_target_properties(${TARGET_APP}.elf PROPERTIES VERSION ${WSH_FW_VER_BOOT})
+set_target_properties(${TARGET_APP}.elf PROPERTIES VERSION ${FW_VER_BOOT})
 file(GLOB_RECURSE SOURCES_BOOT
 	"boot/*.c"
 )
@@ -156,7 +156,7 @@ target_include_directories(${TARGET_BOOT}.elf PRIVATE
 	${CMAKE_SOURCE_DIR}/boot
 )
 target_link_options(${TARGET_BOOT}.elf PRIVATE
-	-T${CMAKE_SOURCE_DIR}/${BUILD_DIR}/${WSH_FW_PLATFORM}_boot_linker_script.ld
+	-T${CMAKE_SOURCE_DIR}/${BUILD_DIR}/${FW_PLATFORM}_boot_linker_script.ld
 )
 set_target_properties(${TARGET_BOOT}.elf
 	PROPERTIES
@@ -165,7 +165,7 @@ set_target_properties(${TARGET_BOOT}.elf
 # add_custom_command(TARGET ${TARGET_BOOT}.elf POST_BUILD
 # 	COMMAND ${CMAKE_COMMAND} -E copy
 # 	${CMAKE_SOURCE_DIR}/${BUILD_DIR}/${BOOT_FULL_NAME}.elf
-# 	${CMAKE_SOURCE_DIR}/${BUILD_DIR}/fw_${WSH_FW_PLATFORM_MCU}.elf
+# 	${CMAKE_SOURCE_DIR}/${BUILD_DIR}/fw_${FW_PLATFORM_MCU}.elf
 # )
 # BOOT
 
@@ -173,8 +173,8 @@ set_target_properties(${TARGET_BOOT}.elf
 set(LD_FLASH_START ${FLASH_BOOT_ADDR})
 set(LD_FLASH_SIZE ${FLASH_BOOT_SIZE})
 configure_file(
-	${CMAKE_SOURCE_DIR}/platform/${WSH_FW_PLATFORM_MCU}/linker_script.ld
-	${CMAKE_SOURCE_DIR}/${BUILD_DIR}/${WSH_FW_PLATFORM}_boot_linker_script.ld
+	${CMAKE_SOURCE_DIR}/platform/${FW_PLATFORM_MCU}/linker_script.ld
+	${CMAKE_SOURCE_DIR}/${BUILD_DIR}/${FW_PLATFORM}_boot_linker_script.ld
 )
 unset(LD_FLASH_START)
 unset(LD_FLASH_SIZE)
@@ -182,8 +182,8 @@ unset(LD_FLASH_SIZE)
 set(LD_FLASH_START ${FLASH_APP_ADDR})
 set(LD_FLASH_SIZE ${FLASH_APP_SIZE})
 configure_file(
-	${CMAKE_SOURCE_DIR}/platform/${WSH_FW_PLATFORM_MCU}/linker_script.ld
-	${CMAKE_SOURCE_DIR}/${BUILD_DIR}/${WSH_FW_PLATFORM}_app_linker_script.ld
+	${CMAKE_SOURCE_DIR}/platform/${FW_PLATFORM_MCU}/linker_script.ld
+	${CMAKE_SOURCE_DIR}/${BUILD_DIR}/${FW_PLATFORM}_app_linker_script.ld
 )
 unset(LD_FLASH_START)
 unset(LD_FLASH_SIZE)
