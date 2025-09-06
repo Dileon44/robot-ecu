@@ -1,0 +1,14 @@
+build
+*.original
+
+# Object files
+*.o
+*.ko
+*.obj
+*.elf
+
+# Executables
+*.exe
+
+# Obsidian
+doc/.obsidian/workspace.json

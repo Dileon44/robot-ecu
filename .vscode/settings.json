@@ -1,0 +1,48 @@
+{
+    //User defined args
+
+    "files.associations": {
+        "*.h": "c",
+        "*.c": "c",
+        "*.in": "c"
+    },
+
+    // // C/C++
+    // "[c]": {
+    //     "editor.formatOnSave": true,
+    // },
+
+    // Python
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.autopep8",
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": "always"
+        }
+    },
+    "flake8.args": ["--ignore=E501"],
+
+    // Markdown
+    "markdownlint.run": "onSave",
+    "markdownlint.config": {
+        "no-duplicate-heading": {
+            "siblings_only": true
+        },
+        "no-hard-tabs": {
+            "spaces_per_tab": 4
+        }
+    },
+
+    "[markdown]": {
+        "editor.codeActionsOnSave": {
+            "source.fixAll.markdownlint": "always"
+        },
+    },
+
+    // Cortex debug
+    "cortex-debug.variableUseNaturalFormat": true,
+    "makefile.configureOnOpen": true
+    // "cortex-debug.openocdPath": "${config:openocd_path}",
+    // "cortex-debug.armToolchainPath": "${config:compiler_path}",
+    // "cortex-debug.gdbPath": "${config:compiler_path}",
+}
