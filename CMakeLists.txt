@@ -92,7 +92,7 @@ add_compile_definitions(
 include(FetchContent)
 FetchContent_Declare( freertos_kernel
   GIT_REPOSITORY	https://github.com/FreeRTOS/FreeRTOS-Kernel.git
-  GIT_TAG			V10.6.2 #Note: Best practice to use specific git-hash or tagged version
+  GIT_TAG			V11.2.0 #Note: Best practice to use specific git-hash or tagged version
 )
 
 add_library(freertos_config INTERFACE)

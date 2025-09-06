@@ -48,12 +48,14 @@
 //------------------------------------------------------------------------------------------------------------
 
 #if USE_OS
-#include "FreeRTOS.h"
-#include "task.h"
-#include "queue.h"
-#include "semphr.h"
-#include "timers.h"
-#include "event_groups.h"
+// #include "FreeRTOS.h"
+// #include "task.h"
+// #include "queue.h"
+// #include "semphr.h"
+// #include "timers.h"
+// #include "event_groups.h"
+
+#include "def_rtos.h"
 #endif /* USE_OS */
 
 #include "def_types.h"
@@ -104,5 +106,7 @@ void ErrorHandler(char *pFile, int line);
 								} \
 								return ret;	\
 							} while(0)
+
+// #define configASSERT(x) ASSERT_CHECK(x)
 
 #endif /* __MAIN_H */

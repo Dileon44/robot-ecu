@@ -9,7 +9,7 @@ static void vTask_DebugProcess(void* pvParameters) {
     for(;;) {
 		Pl_Led_Toggle();
 		DEBUG_PRINT("Test\r\n");
-		vTaskDelay(10000);
+		vTaskDelay(1000);
 	}
 }
 
