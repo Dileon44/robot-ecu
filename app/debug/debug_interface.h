@@ -2,7 +2,7 @@
 #define __DEBUG_INTERFACE_H
 
 #include "main.h"
-#include "ringbuff.h"
+#include "ring_buff.h"
 // #include "platform.h"
 
 // int _write(int fd, char* ptr, int len) {
