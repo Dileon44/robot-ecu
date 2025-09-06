@@ -33,7 +33,8 @@ void DebugInterface_Init(void)
     RingBuff_Init(
         &DebugInterface_Usart_RingBuff, 
         DEBUG_INTERFACE_USART_RX_BUFF, 
-        CAPASITY_RING_BUFF_USART_RX
+        CAPASITY_RING_BUFF_USART_RX,
+        NULL
     );
 
 	Pl_USART_Debug_Init(
