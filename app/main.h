@@ -48,14 +48,12 @@
 //------------------------------------------------------------------------------------------------------------
 
 #if USE_OS
-// #include "FreeRTOS.h"
-// #include "task.h"
-// #include "queue.h"
-// #include "semphr.h"
-// #include "timers.h"
-// #include "event_groups.h"
-
-#include "def_rtos.h"
+#include "FreeRTOS.h"
+#include "event_groups.h"
+#include "queue.h"
+#include "semphr.h"
+#include "task.h"
+#include "timers.h"
 #endif /* USE_OS */
 
 #include "def_types.h"
